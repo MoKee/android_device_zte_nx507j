@@ -1,5 +1,13 @@
 [
   {
+    "repository": "android_vendor_nubia_nx507j",
+    "target_path": "vendor/nubia/nx507j"
+  },
+  {
+    "repository": "android_kernel_nubia_nx507j",
+    "target_path": "kernel/nubia/nx507j"
+  },
+  {
     "repository": "android_device_qcom_common",
     "target_path": "device/qcom/common"
   },
