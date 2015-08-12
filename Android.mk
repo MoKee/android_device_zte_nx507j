@@ -21,7 +21,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),NX507J)
+ifeq ($(TARGET_DEVICE),nx507j)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 include $(CLEAR_VARS)
 FIRMWARE_WCD9320_IMAGES := \
