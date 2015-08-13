@@ -95,8 +95,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     libxml2 \
-    camera.msm8974 \
-    Camera2
+    camera.msm8974
 
 # Connectivity Engine support
 PRODUCT_PACKAGES += \
@@ -153,14 +152,10 @@ PRODUCT_PACKAGES += \
     qcom.fmradio \
     qcom.fmradio.xml
 
-# QRNGD
-PRODUCT_PACKAGES += \
-    qrngd \
-    qrngp
-
 # keyhandler
 PRODUCT_PACKAGES += \
     com.cyanogenmod.keyhandler
+
 # LOWI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/lowi.conf:system/etc/lowi.conf
@@ -184,7 +179,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     $(LOCAL_PATH)/etc/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/etc/media_profiles.xml:system/etc/media_profiles.xml
-
 
 # WiFi
 PRODUCT_COPY_FILES += \
@@ -228,7 +222,6 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.rc \
     fstab.qcom \
     init.class_main.sh \
     init.mdm.sh \
@@ -248,10 +241,6 @@ PRODUCT_PACKAGES += \
     init.usb.rc \
     ueventd.qcom.rc \
     ueventd.rc
-
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
 
 # Thermal config
 PRODUCT_COPY_FILES += \
