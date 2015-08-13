@@ -299,11 +299,8 @@ PRODUCT_PACKAGES += \
     LatinIME \
     libjni_latinime
 
-# etc bluetooth
+# etc
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
-    $(LOCAL_PATH)/etc/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
-    $(LOCAL_PATH)/etc/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
     $(LOCAL_PATH)/etc/cne/andsfCne.xml:system/etc/cne/andsfCne.xml \
     $(LOCAL_PATH)/etc/cne/SwimConfig.xml:system/etc/cne/SwimConfig.xml \
     $(LOCAL_PATH)/etc/flp.conf:system/etc/flp.conf \
