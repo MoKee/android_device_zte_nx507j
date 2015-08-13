@@ -1,11 +1,11 @@
 [
   {
-    "repository": "android_vendor_nubia_nx507j",
-    "target_path": "vendor/nubia/nx507j"
+    "repository": "android_vendor_zte_nx507j",
+    "target_path": "vendor/zte/nx507j"
   },
   {
-    "repository": "android_kernel_nubia_nx507j",
-    "target_path": "kernel/nubia/nx507j"
+    "repository": "android_kernel_zte_nx507j",
+    "target_path": "kernel/zte/nx507j"
   },
   {
     "repository": "android_device_qcom_common",
