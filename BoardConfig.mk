@@ -48,7 +48,6 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 12738083840
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/recovery.fstab
 BOARD_VENDOR := zte-qcom
-TARGET_SPECIFIC_HEADER_PATH := device/zte/nx507j/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
@@ -144,8 +143,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-# Ant or qualcomm-uart ?
-#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
+# ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Camera
