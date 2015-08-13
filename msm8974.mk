@@ -237,10 +237,7 @@ PRODUCT_PACKAGES += \
     init.qcom.syspart_fixup.sh \
     init.qcom.usb.sh \
     init.target.rc \
-    init.trace.rc \
-    init.usb.rc \
-    ueventd.qcom.rc \
-    ueventd.rc
+    ueventd.qcom.rc
 
 # Thermal config
 PRODUCT_COPY_FILES += \
