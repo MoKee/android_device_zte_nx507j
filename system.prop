@@ -141,9 +141,6 @@ persist.sys.wifi.softapname=nubia Z7 mini
 #device name
 ro.config.devicename=nubia Z7 mini
 
-#set primary card enabled
-persist.radio.primarycard=false
-
 #Two panels for Settings and Mms
 persist.sys.twopanel.enable=false
 
