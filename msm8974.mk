@@ -101,23 +101,12 @@ PRODUCT_PACKAGES += \
 
 # Connectivity Engine support
 PRODUCT_PACKAGES += \
-    libcnefeatureconfig \
-    services-ext
+    libcnefeatureconfig
 
 # Charger
 PRODUCT_PACKAGES += \
     charger \
     charger_res_images
-
-# Wfd
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/capability.xml:system/etc/capability.xml \
-    $(LOCAL_PATH)/etc/wfdconfig.xml:system/etc/wfdconfig.xml \
-    $(LOCAL_PATH)/etc/wfdconfig1280_720.xml:system/etc/wfdconfig1280_720.xml \
-    $(LOCAL_PATH)/etc/wfdconfig640_480.xml:system/etc/wfdconfig640_480.xml \
-    $(LOCAL_PATH)/etc/wfdconfig800_480.xml:system/etc/wfdconfig800_480.xml \
-    $(LOCAL_PATH)/etc/wfdconfig960_540.xml:system/etc/wfdconfig960_540.xml \
-    $(LOCAL_PATH)/etc/wfdconfigsink.xml:system/etc/wfdconfigsink.xml
 
 # Display
 PRODUCT_PACKAGES += \
@@ -192,7 +181,6 @@ PRODUCT_COPY_FILES += \
 # country for infrared
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/init.d/66country:system/etc/init.d/66country
-
     
 # OMX
 PRODUCT_PACKAGES += \
@@ -289,9 +277,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libion
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-
 PRODUCT_PACKAGES += \
     ntfs-3g \
     ntfsfix \
@@ -303,8 +288,6 @@ PRODUCT_PACKAGES += \
 
 # etc
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/cne/andsfCne.xml:system/etc/cne/andsfCne.xml \
-    $(LOCAL_PATH)/etc/cne/SwimConfig.xml:system/etc/cne/SwimConfig.xml \
     $(LOCAL_PATH)/etc/flp.conf:system/etc/flp.conf \
     $(LOCAL_PATH)/etc/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/etc/hcidump.sh:system/etc/hcidump.sh \
@@ -327,7 +310,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/quipc.conf:system/etc/quipc.conf \
     $(LOCAL_PATH)/etc/sap.conf:system/etc/sap.conf \
     $(LOCAL_PATH)/etc/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf \
-    $(LOCAL_PATH)/etc/xtra_root_cert.pem:system/etc/xtra_root_cert.pem \
     $(LOCAL_PATH)/etc/xtwifi.conf:system/etc/xtwifi.conf \
     $(LOCAL_PATH)/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
 
