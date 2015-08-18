@@ -47,6 +47,8 @@
 #define BREATH_LED_BRIGHTNESS_BATTERY		"0,50"
 #define BREATH_LED_BRIGHTNESS_CHARGING		"20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60"
 
+#define BUTTON_LED_BRIGHTNESS			"0,1,2,3,4"
+
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
@@ -78,6 +80,9 @@ char const *const RIGHT_BUTTON_RAMP_STEP_MS
 char const *const RIGHT_BUTTON_LUT_FLAGS
         = "/sys/class/leds/led:rgb_green/lut_flags";
 
+char const *const RIGHT_BUTTON_DUTY_PCTS
+        = "/sys/class/leds/led:rgb_green/duty_pcts";
+
 char const *const LEFT_BUTTON_BLINK
         = "/sys/class/leds/led:rgb_blue/blink";
 
@@ -86,6 +91,9 @@ char const *const LEFT_BUTTON_RAMP_STEP_MS
 
 char const *const LEFT_BUTTON_LUT_FLAGS
         = "/sys/class/leds/led:rgb_blue/lut_flags";
+
+char const *const LEFT_BUTTON_DUTY_PCTS
+        = "/sys/class/leds/led:rgb_blue/duty_pcts";
 
 char const*const BREATH_LED_BLINK
         = "/sys/class/leds/red/blink";
@@ -352,6 +360,8 @@ set_light_buttons(struct light_device_t* dev,
     int brightness = rgb_to_brightness(state);
     pthread_mutex_lock(&g_lock);
     g_buttons = *state;
+    write_str(LEFT_BUTTON_DUTY_PCTS, BUTTON_LED_BRIGHTNESS);
+    write_str(RIGHT_BUTTON_DUTY_PCTS, BUTTON_LED_BRIGHTNESS);
     write_int(LEFT_BUTTON_LUT_FLAGS, PM_PWM_LUT_RAMP_UP);	
     write_int(RIGHT_BUTTON_LUT_FLAGS, PM_PWM_LUT_RAMP_UP);	
     write_int(LEFT_BUTTON_RAMP_STEP_MS, (int)40);
