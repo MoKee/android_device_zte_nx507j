@@ -46,21 +46,24 @@
 #define BREATH_LED_BRIGHTNESS_BUTTONS		"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
 #define BREATH_LED_BRIGHTNESS_BATTERY		"0,50"
 #define BREATH_LED_BRIGHTNESS_CHARGING		"20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60"
+#define BREATH_LED_BRIGHTNESS_LCD		BREATH_LED_BRIGHTNESS_BUTTONS
 
 #define BUTTON_LED_BRIGHTNESS			"0,1,2,3,4"
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
+static struct light_state_t g_lcd;
 static struct light_state_t g_notification;
 static struct light_state_t g_battery;
 static struct light_state_t g_buttons;
 static struct light_state_t g_attention;
 
-#define BREATH_SOURCE_NOTIFICATION	0x01
-#define BREATH_SOURCE_BATTERY		0x02
-#define BREATH_SOURCE_BUTTONS		0x04
-#define BREATH_SOURCE_ATTENTION		0x08
+#define BREATH_SOURCE_LCD		0x01
+#define BREATH_SOURCE_NOTIFICATION	0x02
+#define BREATH_SOURCE_BATTERY		0x04
+#define BREATH_SOURCE_BUTTONS		0x08
+#define BREATH_SOURCE_ATTENTION		0x10
 #define BREATH_SOURCE_NONE		0xFF
 static int active_states = 0;
 
@@ -210,19 +213,6 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
-set_light_backlight(struct light_device_t* dev,
-        struct light_state_t const* state)
-{
-    int err = 0;
-    int brightness = rgb_to_brightness(state);
-    pthread_mutex_lock(&g_lock);
-    err = write_int(LCD_FILE, brightness);
-    ALOGD("[LIGHTS.MSM8974] lcd brightness=%d\n", brightness);
-    pthread_mutex_unlock(&g_lock);
-    return err;
-}
-
-static int
 set_breath_light_locked(int event_source,
 	struct light_state_t const* state)
 {
@@ -279,7 +269,17 @@ set_breath_light_locked(int event_source,
 
     char* light_template;
     int lut_flags = 0;
-    if(active_states & BREATH_SOURCE_NOTIFICATION) {
+    if (active_states & BREATH_SOURCE_LCD) {
+        ALOGE("[LIGHTS.MSM8974] LCD");
+	state = &g_lcd;
+	if(last_state == BREATH_SOURCE_LCD || last_state == BREATH_SOURCE_BUTTONS) {
+            ALOGE("[LIGHTS.MSM8974] LCD return 0");
+	    return 0;
+	}
+	light_template = BREATH_LED_BRIGHTNESS_LCD;
+	lut_flags = PM_PWM_LUT_RAMP_UP;
+	last_state = BREATH_SOURCE_LCD;	
+    } else if(active_states & BREATH_SOURCE_NOTIFICATION) {
         ALOGE("[LIGHTS.MSM8974] Notification");
 	state = &g_notification;
 	light_template = BREATH_LED_BRIGHTNESS_NOTIFICATION;
@@ -353,6 +353,21 @@ set_breath_light_locked(int event_source,
     usleep(20000);
     write_int(BREATH_LED_BLINK, 1);
     return 0;
+}
+
+static int
+set_light_backlight(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    int err = 0;
+    int brightness = rgb_to_brightness(state);
+    pthread_mutex_lock(&g_lock);
+    g_lcd = *state;
+    err = write_int(LCD_FILE, brightness);
+    ALOGD("[LIGHTS.MSM8974] lcd brightness=%d\n", brightness);
+    set_breath_light_locked(BREATH_SOURCE_LCD, &g_lcd);
+    pthread_mutex_unlock(&g_lock);
+    return err;
 }
 
 static int
