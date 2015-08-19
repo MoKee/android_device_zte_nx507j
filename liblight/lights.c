@@ -342,6 +342,7 @@ set_breath_light_locked(int event_source,
     ALOGD("[LIGHTS.MSM8974] writing values: pause_lo=%d, pause_hi=%d, lut_flags=%d\n", offMS, onMS, lut_flags);
 
     write_int(BREATH_LED_BLINK, 0);
+    usleep(20000);
     write_str(BREATH_LED_DUTY_PCTS, light_template);
     write_int(BREATH_LED_RAMP_STEP_MS, (int)20);
     if(offMS > 0)
@@ -349,6 +350,7 @@ set_breath_light_locked(int event_source,
     if(onMS > 0)
 	write_int(BREATH_LED_PAUSE_HI, (int)onMS);
     write_int(BREATH_LED_LUT_FLAGS, lut_flags);
+    usleep(20000);
     write_int(BREATH_LED_BLINK, 1);
     return 0;
 }
@@ -360,12 +362,15 @@ set_light_buttons(struct light_device_t* dev,
     int brightness = rgb_to_brightness(state);
     pthread_mutex_lock(&g_lock);
     g_buttons = *state;
-    write_str(LEFT_BUTTON_DUTY_PCTS, BUTTON_LED_BRIGHTNESS);
-    write_str(RIGHT_BUTTON_DUTY_PCTS, BUTTON_LED_BRIGHTNESS);
-    write_int(LEFT_BUTTON_LUT_FLAGS, PM_PWM_LUT_RAMP_UP);	
-    write_int(RIGHT_BUTTON_LUT_FLAGS, PM_PWM_LUT_RAMP_UP);	
-    write_int(LEFT_BUTTON_RAMP_STEP_MS, (int)40);
-    write_int(RIGHT_BUTTON_RAMP_STEP_MS, (int)40);
+    if (brightness > 0) {
+    	write_str(LEFT_BUTTON_DUTY_PCTS, BUTTON_LED_BRIGHTNESS);
+    	write_str(RIGHT_BUTTON_DUTY_PCTS, BUTTON_LED_BRIGHTNESS);
+    	write_int(LEFT_BUTTON_LUT_FLAGS, PM_PWM_LUT_RAMP_UP);	
+    	write_int(RIGHT_BUTTON_LUT_FLAGS, PM_PWM_LUT_RAMP_UP);	
+    	write_int(LEFT_BUTTON_RAMP_STEP_MS, (int)40);
+    	write_int(RIGHT_BUTTON_RAMP_STEP_MS, (int)40);
+	usleep(20000);
+    }
     write_int(LEFT_BUTTON_BLINK, brightness?1:0);
     write_int(RIGHT_BUTTON_BLINK, brightness?1:0);
     set_breath_light_locked(BREATH_SOURCE_BUTTONS, &g_buttons);
