@@ -199,12 +199,6 @@ write_str(char const* path, char *value)
 }
 
 static int
-is_lit(struct light_state_t const* state)
-{
-    return state->color & 0x00ffffff;
-}
-
-static int
 rgb_to_brightness(struct light_state_t const* state)
 {
     int color = state->color & 0x00ffffff;
@@ -216,17 +210,11 @@ static int
 set_breath_light_locked(int event_source,
 	struct light_state_t const* state)
 {
-    int len;
     int blink;
-    int onMS, offMS, ramp;
-    unsigned int colorRGB, event_colorRGB;
-    int brightness, event_brightness;
+    int onMS, offMS;
+    int event_brightness;
 
-    event_colorRGB = state->color;
-
-    event_brightness = ((77 * ((event_colorRGB >> 16) & 0xFF)) +
-                      (150 * ((event_colorRGB >> 8) & 0xFF)) +
-                      (29 * (event_colorRGB & 0xFF))) >> 8;
+    event_brightness = rgb_to_brightness(state);
 
     if(event_brightness > 0) {
 	active_states |= event_source;
@@ -237,8 +225,8 @@ set_breath_light_locked(int event_source,
 	    ALOGD("[LIGHTS.MSM8974] disabling buttons backlight\n");
 	    //write_int(BREATH_LED_LUT_FLAGS, PM_PWM_LUT_NO_TABLE); // smoothly turn led off
 	    write_int(BREATH_LED_BLINK, 0); // just turn led off
-	    write_int(LEFT_BUTTON_BLINK, 0);
-	    write_int(RIGHT_BUTTON_BLINK, 0);
+//	    write_int(LEFT_BUTTON_BLINK, 0);
+//	    write_int(RIGHT_BUTTON_BLINK, 0);
 	    last_state = BREATH_SOURCE_NONE;
 	    return 0;
 	}
@@ -248,27 +236,10 @@ set_breath_light_locked(int event_source,
       return 0;
     }
 
-    colorRGB = state->color;
-    brightness = ((77 * ((colorRGB >> 16) & 0xFF)) +
-                      (150 * ((colorRGB >> 8) & 0xFF)) +
-                      (29 * (colorRGB & 0xFF))) >> 8;
-    
-    switch (state->flashMode) {
-        case LIGHT_FLASH_TIMED:
-            onMS = state->flashOnMS;
-            offMS = state->flashOffMS;
-            break;
-        case LIGHT_FLASH_NONE:
-        default:
-            onMS = 0;
-            offMS = 0;
-            break;
-    }
-    
-    blink = (onMS+offMS)?1:0;
-
     char* light_template;
     int lut_flags = 0;
+    onMS = 0;
+    offMS = 0;
     if (active_states & BREATH_SOURCE_LCD) {
         ALOGE("[LIGHTS.MSM8974] LCD");
 	state = &g_lcd;
@@ -282,6 +253,14 @@ set_breath_light_locked(int event_source,
     } else if(active_states & BREATH_SOURCE_NOTIFICATION) {
         ALOGE("[LIGHTS.MSM8974] Notification");
 	state = &g_notification;
+
+	if (state->flashMode == LIGHT_FLASH_TIMED) {
+	    onMS = state->flashOnMS;
+	    offMS = state->flashOffMS;
+	}
+    
+	blink = (onMS+offMS)?1:0;
+
 	light_template = BREATH_LED_BRIGHTNESS_NOTIFICATION;
 	lut_flags = PM_PWM_LUT_RAMP_UP;
 	if(blink) {
