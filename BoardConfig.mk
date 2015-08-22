@@ -18,6 +18,9 @@
 
 LOCAL_PATH := device/zte/nx507j
 
+# Use SaberMod Toolchains
+SABERMOD_TOOLCHAIN_ENABLED := true
+
 # Thanks list
 TARGET_RELEASETOOLS_EXTENSIONS 	:= device/zte/nx507j
 
