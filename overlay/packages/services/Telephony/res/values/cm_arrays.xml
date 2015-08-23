@@ -27,11 +27,11 @@
         <item>@string/preferred_network_mode_td_scdma_wcdma_choice</item>
         <item>@string/preferred_network_mode_td_scdma_only_choice</item>
         <item>@string/preferred_network_mode_lte_wcdma_choice</item>
-        <item>@string/preferred_network_mode_cdma_evdo_gsm_wcdma_choice</item>
-        <item>@string/preferred_network_mode_global_choice</item>
-        <item>@string/preferred_network_mode_cdma_lte_evdo_choice</item>
-        <item>@string/preferred_network_mode_gsm_wcdma_lte_choice</item>
         <item>@string/preferred_network_mode_lte_choice</item>
+        <item>@string/preferred_network_mode_global_choice</item>
+        <item>@string/preferred_network_mode_gsm_wcdma_lte_choice</item>
+        <item>@string/preferred_network_mode_cdma_lte_evdo_choice</item>
+        <item>@string/preferred_network_mode_cdma_evdo_gsm_wcdma_choice</item>
         <item>@string/preferred_network_mode_cdma_wo_evdo_choice</item>
         <item>@string/preferred_network_mode_cdma_evdo_auto_choice</item>
         <item>@string/preferred_network_mode_gsm_wcdma_auto_choice</item>
