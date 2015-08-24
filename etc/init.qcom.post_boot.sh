@@ -623,3 +623,5 @@ case "$target" in
         echo $oem_version > /sys/devices/soc0/image_crm_version
         ;;
 esac
+
+settings put global captive_portal_detection_enabled 0
