@@ -300,6 +300,8 @@ on boot
     
     chown system system /sys/kernel/lcd_enhance/saturation
     chmod 0666 /sys/kernel/lcd_enhance/saturation
+    chown system system /sys/kernel/lcd_enhance/colortmp
+    chmod 0666 /sys/kernel/lcd_enhance/colortmp
 
 # add the sensor sysfs permission
 	#gesture
