@@ -33,10 +33,14 @@ $(FIRMWARE_WCD9320_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /data/misc/audio/$(notdir $@) $@
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_WCD9320_SYMLINKS)
+
 $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
     ln -sf /data/misc/wifi/WCNSS_qcom_cfg.ini \
-	    $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini)
-$(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
+	    $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini; \
     ln -sf /system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
 	    $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin)
+
+$(shell mkdir -p $(TARGET_OUT)/etc; \
+    ln -sf /system/etc/selective-spn-conf.xml \
+	   $(TARGET_OUT)/etc/spn-conf.xml)
 endif
