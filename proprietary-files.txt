@@ -100,6 +100,7 @@ lib/libmorpho_image_converter.so
 lib/libmorpho_jpeg_io.so
 lib/libmorpho_memory_allocator.so
 lib/libmorpho_strobe_photo_jni.so
+lib/libImageAlogrithm.so
 
 
 # Graphics
