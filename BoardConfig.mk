@@ -18,6 +18,8 @@
 
 LOCAL_PATH := device/zte/nx507j
 
+MK_TOOLCHAIN_VARIANT := uber
+
 # Thanks list
 TARGET_RELEASETOOLS_EXTENSIONS 	:= device/zte/nx507j
 
