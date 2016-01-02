@@ -15,7 +15,7 @@
 #
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product-if-exists, vendor/nubia/nx507j/nx507j-vendor.mk)
+$(call inherit-product-if-exists, vendor/zte/nx507j/nx507j-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -114,8 +114,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PACKAGES += \
     libxml2 \
-    camera.msm8974 \
-    Camera2
+    camera.msm8974
 
 # Connectivity Engine support
 PRODUCT_PACKAGES += \
@@ -223,7 +222,6 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.rc \
     fstab.qcom \
     init.class_main.sh \
     init.mdm.sh \
@@ -237,9 +235,7 @@ PRODUCT_PACKAGES += \
     init.qcom.ssr.sh \
     init.qcom.usb.sh \
     init.target.rc \
-    init.trace.rc \
-    ueventd.qcom.rc \
-    ueventd.rc
+    ueventd.qcom.rc
 
 # Old RIL symbols
 PRODUCT_PACKAGES += \
@@ -290,10 +286,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libion
 
-PRODUCT_PACKAGES += \
-    LatinIME \
-    libjni_latinime
-
 # GPS configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/flp.conf:system/etc/flp.conf \
@@ -304,9 +296,6 @@ PRODUCT_COPY_FILES += \
 
 # etc
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
-    $(LOCAL_PATH)/etc/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
-    $(LOCAL_PATH)/etc/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
     $(LOCAL_PATH)/etc/hcidump.sh:system/etc/hcidump.sh \
     $(LOCAL_PATH)/etc/hsic.control.bt.sh:system/etc/hsic.control.bt.sh \
     $(LOCAL_PATH)/etc/init.ath3k.bt.sh:system/etc/init.ath3k.bt.sh \

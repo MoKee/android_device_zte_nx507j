@@ -71,7 +71,7 @@ etc/firmware/venus.mdt
 # Camera
 bin/mm-qcamera-app
 bin/mm-qcamera-daemon
-lib/hw/camera.msm8974.so:lib/hw/camera.msm8974.so
+lib/hw/camera.msm8974.so
 lib/libqomx_core.so
 lib/libOmxVdecHevc.so
 lib/libchromatix_imx135_069_liveshot.so

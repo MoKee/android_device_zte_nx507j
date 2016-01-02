@@ -1,0 +1,30 @@
+[
+  {
+    "repository": "android_external_stlport",
+    "target_path": "external/stlport"
+  },
+  {
+    "repository": "android_external_sony_boringssl-compat",
+    "target_path": "external/sony/boringssl-compat"
+  },
+  {
+    "repository": "android_device_qcom_common",
+    "target_path": "device/qcom/common"
+  },
+  {
+    "repository": "android_hardware_qcom_fm",
+    "target_path": "hardware/qcom/fm"
+  },
+  {
+    "repository": "android_external_connectivity",
+    "target_path": "external/connectivity"
+  },
+  {
+    "repository": "android_kernel_zte_nx507j",
+    "target_path": "kernel/zte/nx507j"
+  },
+  {
+    "repository": "android_vendor_zte_nx507j",
+    "target_path": "vendor/zte/nx507j"
+  }
+]

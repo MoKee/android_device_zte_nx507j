@@ -3,8 +3,6 @@
 #
 ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
-persist.sys.usb.config=adb
-
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
@@ -179,5 +177,3 @@ persist.sys.wfd.1080p_support=true
 
 #add model number
 persist.sys.modelnumber=NX507J
-
-dalvik.vm.dex2oat-swap=false
