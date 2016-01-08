@@ -2,7 +2,7 @@
 # Copyright (c) 2015 PaoloW8
 
 sleep 2
-softkey=`sqlite3 /data/data/org.cyanogenmod.cmsettings/databases/cmsettings.db "select value FROM secure WHERE name='dev_force_show_navbar'"`
+softkey=`sqlite3 /data/data/org.mokee.mksettings/databases/mksettings.db "select value FROM secure WHERE name='dev_force_show_navbar'"`
 file="/system/usr/keylayout/Generic.kl"
 to_do="$(cat $file | grep "key 102   HOME" | cut -b1)"
 

@@ -16,15 +16,15 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from NX507J device
-$(call inherit-product, device/nubia/nx507j/nx507j.mk)
+$(call inherit-product, device/zte/nx507j/nx507j.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/mk/config/nfc_enhanced.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common MK stuff.
+$(call inherit-product, vendor/mk/config/common_full_phone.mk)
 
-PRODUCT_NAME := cm_nx507j
+PRODUCT_NAME := mk_nx507j
 PRODUCT_DEVICE := nx507j
 PRODUCT_MANUFACTURER := Nubia
 PRODUCT_MODEL := NX507J

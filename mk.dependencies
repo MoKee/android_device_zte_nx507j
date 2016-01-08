@@ -1,5 +1,13 @@
 [
   {
+    "repository": "android_kernel_zte_nx507j",
+    "target_path": "kernel/zte/nx507j"
+  },
+  {
+    "repository": "android_vendor_zte_nx507j",
+    "target_path": "vendor/zte/nx507j"
+  },
+  {
     "repository": "android_external_stlport",
     "target_path": "external/stlport"
   },
@@ -14,13 +22,5 @@
   {
     "repository": "android_hardware_qcom_fm",
     "target_path": "hardware/qcom/fm"
-  },
-  {
-    "repository": "android_external_connectivity",
-    "target_path": "external/connectivity"
-  },
-  {
-    "repository": "arm-cortex_a15-linux-gnueabihf-linaro_4.9",
-    "target_path": "prebuilts/gcc/linux-x86/arm/arm-cortex_a15-linux-gnueabihf-linaro_4.9"
   }
 ]

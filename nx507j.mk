@@ -15,7 +15,7 @@
 #
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product-if-exists, vendor/nubia/nx507j/nx507j-vendor.mk)
+$(call inherit-product-if-exists, vendor/zte/nx507j/nx507j-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay

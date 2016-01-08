@@ -14,9 +14,9 @@
 # limitations under the License.
 
 # inherit from the proprietary version
--include vendor/nubia/nx507j/BoardConfigVendor.mk
+-include vendor/zte/nx507j/BoardConfigVendor.mk
 
-LOCAL_PATH := device/nubia/nx507j
+LOCAL_PATH := device/zte/nx507j
 
 PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 	frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl \
@@ -34,7 +34,7 @@ FEATURE_QCRIL_UIM_SAP_SERVER_MODE := true
 PROTOBUF_SUPPORTED := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := NX507J,nx507j,cm_NX507J,cm_nx507j,NX507j,jNX507
+TARGET_OTA_ASSERT_DEVICE := NX507J,nx507j,mk_NX507J,mk_nx507j,NX507j,jNX507
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -80,9 +80,9 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
-TARGET_KERNEL_SOURCE := kernel/nubia/nx507j
+TARGET_KERNEL_SOURCE := kernel/zte/nx507j
 TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_CONFIG := cm-nx507j_defconfig
+TARGET_KERNEL_CONFIG := mokee_nx507j_defconfig
 TARGET_ZTEMT_DTS := true
 
 # Power
@@ -145,13 +145,13 @@ COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 # RPC
 TARGET_NO_RPC := true
 
-# CMHW
-#BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
+# MKHW
+#BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
 TARGET_TAP_TO_WAKE_NODE := "/data/tp/easy_wakeup_gesture"
-BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_USES_MOKEE_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
-    $(LOCAL_PATH)/cmhw \
-    hardware/cyanogen/cmhw
+    $(LOCAL_PATH)/mkhw \
+    hardware/mokee/mkhw
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -202,5 +202,5 @@ SKIP_BOOT_JARS_CHECK := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/nubia/nx507j/sepolicy
+BOARD_SEPOLICY_DIRS += device/zte/nx507j/sepolicy
 
