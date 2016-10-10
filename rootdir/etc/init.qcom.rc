@@ -240,12 +240,11 @@ on boot
 	chown system system /sys/class/leds/red/pwm_us
 	chmod 0666 /sys/class/leds/red/pwm_us
 
-    	chown system system /sys/class/input/input0/wakeup_gesture
-	chmod 0666 /sys/class/input/input0/wakeup_gesture
-    	chown system system /sys/bus/ttsp4/devices/main_ttsp_core.cyttsp4_i2c_adapter/easy_wakeup_gesture
-	chmod 0666 /sys/bus/ttsp4/devices/main_ttsp_core.cyttsp4_i2c_adapter/easy_wakeup_gesture
-	chown system system /sys/devices/gpio_keys.85/disabled_keys	
-	chmod 0666 /sys/devices/gpio_keys.85/disabled_keys	
+	#touchscreen
+    	chown system system /sys/devices/f9924000.i2c/i2c-2/2-005d/wakeup_gesture
+	chmod 0666 /sys/devices/f9924000.i2c/i2c-2/2-005d/wakeup_gesture
+	chown system system /sys/devices/f9924000.i2c/i2c-2/2-005d/keypad_enable	
+	chmod 0666 /sys/devices/f9924000.i2c/i2c-2/2-005d/keypad_enable	
 
 	#lcd enhance
 	chown system system /sys/kernel/lcd_enhance/disptype

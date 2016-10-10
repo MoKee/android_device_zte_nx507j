@@ -17,8 +17,7 @@
 
 package org.mokee.hardware;
 
-import org.mokee.hardware.util.FileUtils;
-import android.os.SystemProperties;
+import org.mokee.internal.util.FileUtils;
 
 /*
  * Disable capacitive keys
@@ -31,10 +30,10 @@ import android.os.SystemProperties;
 
 public class KeyDisabler {
 
-    private static String CONTROL_PATH = "/sys/devices/gpio_keys.85/disabled_keys";
-    
-    public static boolean isSupported() {
-        return true; 
+    private static String CONTROL_PATH = "/sys/devices/f9924000.i2c/i2c-2/2-005d/keypad_enable";
+
+    public static boolean isSupported() { 
+        return FileUtils.isFileWritable(CONTROL_PATH);
     }
 
     public static boolean isActive() {
@@ -42,7 +41,6 @@ public class KeyDisabler {
     }
 
     public static boolean setActive(boolean state) {
-	SystemProperties.set ( "softkey.change" ,  "1" );
         return FileUtils.writeLine(CONTROL_PATH, (state ? "0" : "1"));
     }
 
