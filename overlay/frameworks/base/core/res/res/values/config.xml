@@ -51,15 +51,15 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>4</item>
-        <item>8</item>
+        <item>15</item>
+        <item>15</item>
         <item>25</item>
-        <item>45</item>
-        <item>58</item>
+        <item>37</item>
+        <item>50</item>
         <item>65</item>
         <item>110</item>
         <item>160</item>
-        <item>210</item>
+        <item>180</item>
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
@@ -338,22 +338,7 @@
          For this time after the screen turns on, the Power Manager
          will not debounce light sensor readings -->
     <!--integer name="config_lightSensorWarmupTime">1000</integer-->
-
-    <!-- Control the behavior when the user short presses the power button.
-            0 - Nothing
-            1 - Go to sleep (doze)
-            2 - Really go to sleep (don't doze)
-            3 - Really go to sleep and go home (don't doze)
-    
-    <integer name="config_shortPressOnPowerBehavior">2</integer> -->
-
-    <!-- Indicate whether to allow the device to suspend when the screen is off
-         due to the proximity sensor.  This resource should only be set to true
-         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
-         Otherwise, the device may fail to wake out of suspend reliably.
-         The default is false. 
-    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool> -->
-
+  
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
@@ -402,4 +387,8 @@
 
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
+
+    <!-- Enable UI blur feature -->
+    <bool name="config_ui_blur_enabled">true</bool>
+
 </resources>

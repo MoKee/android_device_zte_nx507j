@@ -104,29 +104,21 @@ ro.bluetooth.alwaysbleon=true
 #Simulate sdcard on /data/media
 #
 #persist.fuse_sdcard=true
+#ro.sdcardfs.enable=true
 
 #
 #snapdragon value add features
 #
-##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.ssr=false
+##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=fluence
-persist.audio.fluence.mode=endfire
-persist.audio.handset.mic=digital
-persist.audio.voicecall.mic=0
-persist.audio.voice.clarity=none
-persist.audio.aanc.enable=false
-persist.audio.handset_rx_type=DEFAULT
-persist.audio.nsenabled=ON
-persist.speaker.prot.enable=false
-persist.audio.spkcall_2mic=OFF
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=false
 
 ro.qc.sdk.sensors.gestures=true
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
-# system prop for NFC DT
-ro.nfc.port=I2C
-persist.factory.nfc_additional=true
 
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=32

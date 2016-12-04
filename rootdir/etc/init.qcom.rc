@@ -34,7 +34,8 @@ on early-init
 
 on init
     # Preload the BoringSSL wrapper
-    export LD_SHIM_LIBS "/system/lib/libcrypto.so|libboringssl-compat.so:/system/lib/libbuffer_manager.so|libnubia.so"
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so"
+    export LD_SHIM_LIBS /system/lib/libbuffer_manager.so|libnubia.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -240,7 +241,7 @@ on boot
 	chown system system /sys/class/leds/red/pwm_us
 	chmod 0666 /sys/class/leds/red/pwm_us
 
-	#touchscreen
+	#touchscreen (Goodix GT915)
     	chown system system /sys/devices/f9924000.i2c/i2c-2/2-005d/wakeup_gesture
 	chmod 0666 /sys/devices/f9924000.i2c/i2c-2/2-005d/wakeup_gesture
 	chown system system /sys/devices/f9924000.i2c/i2c-2/2-005d/keypad_enable	
@@ -415,10 +416,6 @@ on boot
     # connections on high-throughput links get dropped when
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
-
-    # NFC local data and nfcee xml storage
-    # mkdir /data/nfc 0770 nfc nfc
-    # mkdir /data/nfc/param 0770 nfc nfc
 
     # Set the console loglevel to < KERN_INFO
     # Set the default message loglevel to KERN_INFO
